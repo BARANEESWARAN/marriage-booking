@@ -1,0 +1,51 @@
+/* .sidebar {
+    width: 208px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .collapsed {
+    width: 80px;
+  }
+
+
+  .admin_dashboard{
+    width:100%;
+    height: 100vh;
+  }
+  .admin_container{
+    display: grid;
+    grid-template-columns: 20% 80%;
+  } */
+
+
+  .dashboard_container {
+    display: flex;
+    width: 100%;
+    background-color: #f6f6f6;
+  }
+  
+  .sidebar {
+    width: 17%;
+  }
+  
+  .main-content {
+    width: 83%;
+  margin-top: 3rem;
+  padding: 0 1rem;
+  }
+
+  .small_sidebar{
+    width: 6%;
+  }
+  .small_main-content{
+    width: 94%;
+    margin-top: 3rem;
+    padding: 0 1rem 0 0;
+    padding: 0 1rem;
+ 
+  }
+  
