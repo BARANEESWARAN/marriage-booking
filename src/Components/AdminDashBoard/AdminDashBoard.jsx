@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import "./AdminDashBoard.css"
-import UserDetails from "../UserDetails/UserDetails"
+import "./AdminDashBoard.css";
+import { BiLogOut } from "react-icons/bi";
+import { FacebookOutlined, TwitterOutlined, GoogleOutlined } from '@ant-design/icons';
 import {
   AppstoreOutlined,
   ContainerOutlined,
@@ -12,127 +13,137 @@ import {
   ProfileOutlined,
   HomeOutlined
 } from '@ant-design/icons';
-import { Button, Menu } from 'antd';
-import { NavLink, useNavigate } from 'react-router-dom';
+import UserDetails from '../UserDetails/UserDetails';
+import { NavLink } from 'react-router-dom';
 
 function AdminDashBoard() {
-  const [collapsed, setCollapsed] = useState(false);
-  const [selectedKey, setSelectedKey] = useState('4'); // Default selected key
-  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeOption, setActiveOption] = useState('user-details');
 
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
   };
 
-  function getItem(label, key, icon, children, type) {
-    return {
-      key,
-      icon,
-      children,
-      label,
-      type,
-      onClick: () => handleMenuItemClick(key)
-    };
-  }
-
-  const handleMenuItemClick = (key) => {
-    setSelectedKey(key);
-    // Perform any other actions you need here
+  const handleOptionClick = (option) => {
+    setActiveOption(option);
   };
 
-  const items = [
-    getItem('Home', '1',<NavLink to={"/"}><HomeOutlined /></NavLink>),
-    getItem('Dashboard', '2', <PieChartOutlined />),
-    getItem('Schedule', '3', <DesktopOutlined />),
-    getItem('User Details', '4', <ContainerOutlined />),
-    getItem('Notification', '5', <MailOutlined />),
-    getItem('My Profile', '6', <AppstoreOutlined />),
-    getItem('Help & Support', '7', <MenuUnfoldOutlined />),
-    getItem('Logout', '8', <NavLink to={"/"}><HomeOutlined /></NavLink>),
-  ];
   const renderComponent = () => {
-    switch(selectedKey) {
-      
-      case '2':
-        return <div>Dashboard Component</div>;
-      case '3':
-        return <div>Schedule Component</div>;
-      case '4':
-        return <UserDetails />;
-      case '5':
-        return <div>Notification Component</div>;
-      case '6':
-        return <div>My Profile Component</div>;
-      case '7':
-        return <div>Help & Support Component</div>;
-      case '8':
-        navigate("/"); // Redirect to home page for logout
-        return null; // No need to render anything after redirect
+    switch (activeOption) {
+      case 'home':
+        return 'home';
+      case 'dashboard':
+        return  'dashboard';
+      case 'schedule':
+        return 'schedule';
+      case 'user-details':
+        return (
+          <div style={{padding:"3rem 2rem 0 2rem"}}>
+          <UserDetails />
+          </div>
+        );
+      case 'notification':
+        return 'notification';
+      case 'my-profile':
+        return 'my-profile';
+      case 'help-support':
+        return 'help-support';
       default:
-        return null;
+        return  'home';
     }
   };
+
   return (
-
-<div className="dashboard_container">
-  <div   className={collapsed?"small_sidebar" :"sidebar"}>
-  <div style={{ width: 220 }}>
-          <Button
-            type="primary"
-            onClick={toggleCollapsed}
-            style={collapsed?{ marginBottom: 11,marginLeft:0,marginTop:4,
-              borderRadius:2,
-              width:"36%",
-              display:"flex",
-              alignItems:"center",
-              justifyContent:"center"
-            }:{  width:"100%", marginBottom: 11,marginLeft:0,marginTop:4,borderRadius:2 }}
-          >
-            {collapsed ?(
-              <div style={{display:"flex",alignItems:"center",gap:"1rem"}}>
-                <MenuUnfoldOutlined />
+    <>
+      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+        <div className="logo-details">
+          {
+            isOpen ?
+              <div style={{ display: "flex", width: "100%", alignItems: "center", justifyContent: "space-between" }}>
+                <div className="logo_name">SideMenu</div>
+                <i onClick={toggleSidebar} style={{ cursor: "pointer" }}> <MenuFoldOutlined /></i>
               </div>
-            )  :
-            (
-              <div style={{display:"flex",alignItems:"center",gap:"1rem"}}>
-                <MenuFoldOutlined />
-                <span style={{fontWeight:"bold"}}>Admin</span> 
-              </div>
-            )}
-          </Button>
-          <Menu
-            defaultSelectedKeys={[selectedKey]}
-            defaultOpenKeys={['sub1']}
-            mode="inline"
-            theme="dark"
-            inlineCollapsed={collapsed}
-            items={items}
-            style={{height:"92vh"}}
-          />
+              :
+              <i className={`bx`} id="btn" onClick={toggleSidebar}><MenuUnfoldOutlined /></i>
+          }
         </div>
-  </div>
-  <div     className={collapsed?"main-content" :"small_main-content"}>
-{renderComponent()}
-  </div>
-</div>
+        <ul className="nav-list">
+          <li className={activeOption === 'home' ? 'active' : ''}>
+            <a  onClick={() => handleOptionClick('home')}>
+              <NavLink to={"/"}>
 
+             
+              <i><HomeOutlined /></i>
+              <span className="links_name">Home</span>
+              </NavLink>
+            </a>
+            <span className="tooltip">Home</span>
+          </li>
+          <li className={activeOption === 'dashboard' ? 'active' : ''}>
+            <a href="#" onClick={() => handleOptionClick('dashboard')}>
+              <i><PieChartOutlined /></i>
+              <span className="links_name">Dashboard</span>
+            </a>
+            <span className="tooltip">Dashboard</span>
+          </li>
+          <li className={activeOption === 'schedule' ? 'active' : ''}>
+            <a href="#" onClick={() => handleOptionClick('schedule')}>
+              <i><DesktopOutlined /></i>
+              <span className="links_name">Schedule</span>
+            </a>
+            <span className="tooltip">Schedule</span>
+          </li>
+          <li className={activeOption === 'user-details' ? 'active' : ''}>
+            <a href="#" onClick={() => handleOptionClick('user-details')}>
+              <i><ContainerOutlined /></i>
+              <span className="links_name">User Details</span>
+            </a>
+            <span className="tooltip">User Details</span>
+          </li>
+          <li className={activeOption === 'notification' ? 'active' : ''}>
+            <a href="#" onClick={() => handleOptionClick('notification')}>
+              <i><MailOutlined /></i>
+              <span className="links_name">Notification </span>
+            </a>
+            <span className="tooltip">Notification </span>
+          </li>
+          <li className={activeOption === 'my-profile' ? 'active' : ''}>
+            <a href="#" onClick={() => handleOptionClick('my-profile')}>
+              <i><AppstoreOutlined /></i>
+              <span className="links_name">My Profile</span>
+            </a>
+            <span className="tooltip">My Profile</span>
+          </li>
+          <li className={activeOption === 'help-support' ? 'active' : ''}>
+            <a href="#" onClick={() => handleOptionClick('help-support')}>
+              <i><MenuUnfoldOutlined /></i>
+              <span className="links_name">Help & Support</span>
+            </a>
+            <span className="tooltip">Help & Support</span>
+          </li>
+          <li className="profile">
+            {
+              isOpen ?
+                (
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start" }}>
+                    <i style={{ fontSize: "1.3rem" }}><BiLogOut /></i>
+                    <div style={{ marginBottom: "7px", fontSize: "1rem" }}>Logout</div>
+                  </div>
+                )
+                :
+                (
+                  <i style={{ display: "flex", alignItems: "center", justifyContent: "center" }}><BiLogOut /></i>
+                )
+            }
+          </li>
+        </ul>
+      </div>
+      <section className="home-section">
 
+      {renderComponent()}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      </section>
+    </>
   );
 }
 

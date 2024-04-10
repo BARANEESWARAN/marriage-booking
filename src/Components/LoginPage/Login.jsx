@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import "./Login.css"
-import {SignInButton} from "./signin"
+
 import { Button, Checkbox, Input ,DatePicker,Drawer } from 'antd';
-import Header, { UserHeader } from '../Header/Header';
+import Header from '../Header/Header';
 import ForgotPassword from './ForgotPassword';
-import { FacebookOutlined, TwitterOutlined, GoogleOutlined, InstagramOutlined, YoutubeOutlined } from '@ant-design/icons';
+import { FacebookOutlined, TwitterOutlined, GoogleOutlined } from '@ant-design/icons';
+import OAuth from '../SocialLoginbtns/OAuth';
+import { useNavigate } from 'react-router-dom';
+import { onAuthStateChanged } from '@firebase/auth';
+import { auth } from '../../firebase';
 
 
 
@@ -17,6 +21,30 @@ import { FacebookOutlined, TwitterOutlined, GoogleOutlined, InstagramOutlined, Y
     const[register,setRegister]=useState(true)
 
     const [open, setOpen] = useState(false);
+const navigate=useNavigate()
+
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (result) => {
+        if (result) {
+  
+        
+        navigate("/")
+  
+        
+        } 
+  
+      })
+  
+      return () => unsubscribe();
+    },[])
+
+
+
+
+
+
+
+
   const showDrawer = () => {
     setOpen(true);
   };
@@ -42,7 +70,7 @@ import { FacebookOutlined, TwitterOutlined, GoogleOutlined, InstagramOutlined, Y
   
    return (
     <>
-   <UserHeader/>
+  
     <div className="sliders">
     <div className="sliders__left">
       <div className="slides">
@@ -133,9 +161,14 @@ import { FacebookOutlined, TwitterOutlined, GoogleOutlined, InstagramOutlined, Y
       <Button type="primary" shape="circle" className="btn" href="#">
         <FacebookOutlined />
       </Button>
-      <Button type="primary" shape="circle" className="btn" href="#">
-        <GoogleOutlined />
+      <Button type="primary" shape="circle" className="btn" >
+      <OAuth/>
       </Button>
+     
+       
+       
+        
+      
       <Button type="primary" shape="circle" className="btn" href="#">
         <TwitterOutlined />
       </Button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Form, Input, Button, Row, Col } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { UserHeader } from '../Header/Header';
+
 
 const CardInfo = () => {
   const onFinish = (values) => {
@@ -14,7 +14,7 @@ const CardInfo = () => {
 
   return (
     <>
-  <UserHeader/>
+
     <div style={{ backgroundColor: '#f0f2f5', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Card title="Payment Information" style={{ width: 600, backgroundColor: '#ffffff', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',marginTop:"3rem"}}>
         <Form

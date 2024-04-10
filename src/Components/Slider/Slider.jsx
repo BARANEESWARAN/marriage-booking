@@ -85,7 +85,7 @@ function Slider() {
         <div className="content">
         <div className="author">VMS </div>
           <div className="title">MARRIAGE</div>
-          <div className="topic">BOOKING</div>
+          <div className="topic">MANAGEMENT</div>
           <div className="des">
           It's time to celebrate! the best event organizers
           </div>
@@ -100,7 +100,7 @@ function Slider() {
         <div className="content">
         <div className="author">VMS </div>
           <div className="title">MARRIAGE</div>
-          <div className="topic">BOOKING</div>
+          <div className="topic">MANAGEMENT</div>
           <div className="des">
           It's time to celebrate! the best event organizers
           </div>
@@ -115,7 +115,7 @@ function Slider() {
         <div className="content">
         <div className="author">VMS </div>
           <div className="title">MARRIAGE</div>
-          <div className="topic">BOOKING</div>
+          <div className="topic">MANAGEMENT</div>
           <div className="des">
           It's time to celebrate! the best event organizers
           </div>

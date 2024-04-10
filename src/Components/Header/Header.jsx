@@ -2,19 +2,21 @@ import React, { useEffect, useState } from 'react'
 import "./Header.css"
 import {MenuOutlined } from '@ant-design/icons';
 import { NavLink, useNavigate } from 'react-router-dom';
-export function UserHeader() {
+import { onAuthStateChanged, signOut } from '@firebase/auth';
+import { auth } from '../../firebase';
+// export function UserHeader() {
  
-const navigate=useNavigate()
+// const navigate=useNavigate()
 
-  return (
-    <header className='header'>
+//   return (
+//     <header className='header'>
         
          
- <nav>
-      <input type="checkbox" id="nav-toggle" />
-      <div className="logo"><strong style={{ color: "blue" }}>v</strong><NavLink to={"/"}>ms</NavLink>    </div>
-      {/* <ul className="links">
-      <li className='home' onClick={()=>navigate("/")}>Home</li>
+//  <nav>
+//       <input type="checkbox" id="nav-toggle" />
+//       <div className="logo"><strong style={{ color: "blue" }}>v</strong><NavLink to={"/"}>ms</NavLink>    </div>
+//       {/* <ul className="links">
+//       <li className='home' onClick={()=>navigate("/")}>Home</li>
    
 
     
@@ -27,13 +29,13 @@ const navigate=useNavigate()
       
       
      
-      </ul> */}
-      <label htmlFor="nav-toggle" className="icon-burger">
-        <div className="line"></div>
-        <div className="line"></div>
-        <div className="line"></div>
-      </label>
-    </nav>
+//       </ul> */}
+//       <label htmlFor="nav-toggle" className="icon-burger">
+//         <div className="line"></div>
+//         <div className="line"></div>
+//         <div className="line"></div>
+//       </label>
+//     </nav>
    
       
        
@@ -44,23 +46,53 @@ const navigate=useNavigate()
  
 
     
-      <label htmlFor="nav-toggle" className="icon-burger">
-        <div className="line"></div>
-        <div className="line"></div>
-        <div className="line"></div>
-      </label>
+//       <label htmlFor="nav-toggle" className="icon-burger">
+//         <div className="line"></div>
+//         <div className="line"></div>
+//         <div className="line"></div>
+//       </label>
   
  
-  </header>
-  )
-}
+//   </header>
+//   )
+// }
 
 
 
 
-export function AdminHeader() {
- 
+export function Header() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userData, setUserData] = useState()
   const navigate=useNavigate()
+
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (result) => {
+      if (result) {
+
+        const {displayName, email} = result
+        setUserData({ displayName, email })
+
+        setIsLoggedIn(true)
+      } else {
+        setIsLoggedIn(false)
+      }
+
+    })
+
+    return () => unsubscribe();
+  },[])
+console.log("hey",userData)
+  const Logout = () => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      setUserData({})
+      setIsLoggedIn(false)
+    }).catch((error) => {
+      // An error happened.
+      console.log({ error });
+    });
+  }
   
     return (
       <header className='header'>
@@ -69,19 +101,43 @@ export function AdminHeader() {
    <nav>
         <input type="checkbox" id="nav-toggle" />
         <div className="logo"><strong style={{ color: "blue" }}>v</strong><NavLink to={"/"}>ms</NavLink>    </div>
-        <ul className="links">
+     
     
-        {/* <button className="button-65" onClick={()=>navigate("/admindashboard")}>Dashboard</button> */}
-         {/* <button className="log" onClick={()=>navigate("/login")}>Login</button> */}
-      <div></div>
+
          
-         <div class="button-div">
-    
-    <button className="signup-button" onClick={()=>navigate("/admindashboard")}>Dashboard</button>
-    <button className="login-button" onClick={()=>navigate("/login")}>Login</button>
-    
-    
+
+    {
+ !userData?
+ (
+  <>
+      <button className="login-button" onClick={()=>navigate("/login")}>Login</button>
+  
+     
+  
+  </>
+ )
+ :
+ (
+
+
+
+
+<>
+<div class="button-div">
+
+<button className="signup-button" onClick={()=>navigate("/admindashboard")}>Dashboard</button>
+<button className="login-button" onClick={Logout}>Logout</button>
+
 </div>
+</>
+ )
+}
+
+
+  
+    
+    
+
        
   
   
@@ -90,7 +146,7 @@ export function AdminHeader() {
         
         
        
-        </ul>
+    
         <label htmlFor="nav-toggle" className="icon-burger">
           <div className="line"></div>
           <div className="line"></div>

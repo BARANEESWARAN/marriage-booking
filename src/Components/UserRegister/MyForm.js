@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Form, Input, DatePicker, Button } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { UserHeader } from '../Header/Header';
+
 
 const { TextArea } = Input;
 
@@ -16,7 +16,7 @@ const MyForm = () => {
 
   return (
     <>
-  <UserHeader/>
+
     <div style={{ backgroundColor: '#f0f2f5', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Card title="Customer Information" style={{ width: 900, backgroundColor: '#ffffff', borderRadius: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',marginTop:"3.5rem" }}>
         <Form

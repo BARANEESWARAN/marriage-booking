@@ -1,13 +1,14 @@
 import React from 'react';
 import './Landing.css';
-import  { AdminHeader } from '../Header/Header';
+
 import Slider from '../Slider/Slider';
+import { Header } from '../Header/Header';
 
 
 const LandingPage = () => {
   return (
     <>
- <AdminHeader/>
+<Header/>
      <Slider/>
 
   
