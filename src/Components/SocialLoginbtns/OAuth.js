@@ -25,7 +25,7 @@ const navigate=useNavigate()
         // setUserData({ displayName, email })
 
       if(displayName&&email){
-        navigate("/")
+        navigate("/userregister")
       }
       }).catch((error) => {
 

@@ -8,8 +8,9 @@ import Login from './Components/LoginPage/Login';
 import AdminDashBoard from './Components/AdminDashBoard/AdminDashBoard';
 import MyForm from './Components/UserRegister/MyForm';
 import CardInfo from './Components/UserRegister/CardInfo';
-import { Header } from './Components/Header/Header';
+import  Header  from './Components/Header/Header';
 import { auth } from './firebase';
+import User from './Components/ProtectedRouter/User';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -44,20 +45,23 @@ function App() {
 
 
 <BrowserRouter>
-{/* <Header /> */}
+
     <Routes>
+    <Route path='/' element={<User/>}>
     <Route path='/'  element={<LandingPage/>}/>
     <Route path='/login'  element={<Login/>}/>
-    {user && (
+    <Route path='/userregister'  element={<MyForm/>}/>
+     <Route path='/cardinfo'  element={<CardInfo/>}/>
+     </Route>
+    {/* {user && (
             <>
              <Route path='/admindashboard'  element={<AdminDashBoard/>}/>
-     <Route path='/userregister'  element={<MyForm/>}/>
-     <Route path='/cardinfo'  element={<CardInfo/>}/>
+  
             </>
           ) 
-    }
+    } */}
 
-
+<Route path='/admindashboard'  element={<AdminDashBoard/>}/>
     </Routes>
     </BrowserRouter>
     </div>

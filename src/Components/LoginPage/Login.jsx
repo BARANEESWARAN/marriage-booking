@@ -19,7 +19,8 @@ import { auth } from '../../firebase';
   function Login() {
     const [counter, setCounter] = useState(1);
     const[register,setRegister]=useState(true)
-
+const[userName,setUserName]=useState("")
+const[password,setPassword]=useState("")
     const [open, setOpen] = useState(false);
 const navigate=useNavigate()
 
@@ -66,8 +67,17 @@ const navigate=useNavigate()
         console.log(date, dateString);
       };
 
+      const handleSubmit = (e) => {
+      
+        e.preventDefault();
+        if (userName === "venkat@gmail.com" && password === "venkat") {
+      
+          navigate("/admindashboard");
+        }
+      };
+      
        
-  
+ console.log({userName,password}) 
    return (
     <>
   
@@ -136,10 +146,10 @@ const navigate=useNavigate()
       <form className="login-form">
       <h2 className="login-header">Log in</h2>
         
-          <Input className='input-field' type="email" placeholder="Email" />
+          <Input className='input-field' type="email" placeholder="Email" onChange={(e)=>setUserName(e.target.value)}/>
        
       
-          <Input.Password className='input-field' type="password" placeholder="Password" />
+          <Input.Password className='input-field' type="password" placeholder="Password"  onChange={(e)=>setPassword(e.target.value)}/>
        
           <div className='forgot-password'>
      <div className='remember'>
@@ -153,7 +163,7 @@ const navigate=useNavigate()
    </span>
 </div>
         <div className='login-btns '>
-          <button className='submit-btn' >Login</button>
+          <button className='submit-btn' onClick={handleSubmit} >Login</button>
           
          
           </div>

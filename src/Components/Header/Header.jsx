@@ -1,176 +1,44 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import "./Header.css"
-import {MenuOutlined } from '@ant-design/icons';
-import { NavLink, useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from '@firebase/auth';
 import { auth } from '../../firebase';
-// export function UserHeader() {
- 
-// const navigate=useNavigate()
-
-//   return (
-//     <header className='header'>
-        
-         
-//  <nav>
-//       <input type="checkbox" id="nav-toggle" />
-//       <div className="logo"><strong style={{ color: "blue" }}>v</strong><NavLink to={"/"}>ms</NavLink>    </div>
-//       {/* <ul className="links">
-//       <li className='home' onClick={()=>navigate("/")}>Home</li>
-   
-
-    
-       
-     
-
-
-
-
-      
-      
-     
-//       </ul> */}
-//       <label htmlFor="nav-toggle" className="icon-burger">
-//         <div className="line"></div>
-//         <div className="line"></div>
-//         <div className="line"></div>
-//       </label>
-//     </nav>
-   
-      
-       
-
-   
-     
-  
- 
-
-    
-//       <label htmlFor="nav-toggle" className="icon-burger">
-//         <div className="line"></div>
-//         <div className="line"></div>
-//         <div className="line"></div>
-//       </label>
-  
- 
-//   </header>
-//   )
-// }
-
-
-
-
-export function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [userData, setUserData] = useState()
-  const navigate=useNavigate()
-
-
+import { Button } from 'antd';
+import { useNavigate } from 'react-router-dom';
+function Header() {
+  const [user, setUser] = useState(null);
+const navigate=useNavigate()
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (result) => {
-      if (result) {
-
-        const {displayName, email} = result
-        setUserData({ displayName, email })
-
-        setIsLoggedIn(true)
-      } else {
-        setIsLoggedIn(false)
-      }
-
-    })
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
 
     return () => unsubscribe();
-  },[])
-console.log("hey",userData)
+  }, [user]);
+
   const Logout = () => {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-      setUserData({})
-      setIsLoggedIn(false)
-    }).catch((error) => {
-      // An error happened.
-      console.log({ error });
-    });
-  }
-  
-    return (
-      <header className='header'>
-          
-           
-   <nav>
-        <input type="checkbox" id="nav-toggle" />
-        <div className="logo"><strong style={{ color: "blue" }}>v</strong><NavLink to={"/"}>ms</NavLink>    </div>
+    signOut(auth)
+      .then(() => {
+        setUser({});
+        navigate("/")
+       
+      })
+      .catch((error) => {
+        console.log({ error });
+      });
+  };
+  return (
+    <header className="header-outer">
      
-    
-
-         
-
-    {
- !userData?
- (
-  <>
-      <button className="login-button" onClick={()=>navigate("/login")}>Login</button>
-  
-     
-  
-  </>
- )
- :
- (
-
-
-
-
-<>
-<div class="button-div">
-
-<button className="signup-button" onClick={()=>navigate("/admindashboard")}>Dashboard</button>
-<button className="login-button" onClick={Logout}>Logout</button>
-
-</div>
-</>
- )
+        <div className="header-logo">
+          <img src="data:image/png;base64,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" alt="Logo" />
+        </div>
+      
+   {
+    user&&
+    <Button onClick={Logout}> Logout</Button>
+   }
+    </header>
+  );
 }
 
-
-  
-    
-    
-
-       
-  
-  
-  
-  
-        
-        
-       
-    
-        <label htmlFor="nav-toggle" className="icon-burger">
-          <div className="line"></div>
-          <div className="line"></div>
-          <div className="line"></div>
-        </label>
-      </nav>
-     
-        
-         
-
-     
-       
-    
-   
-  
-      
-        <label htmlFor="nav-toggle" className="icon-burger">
-          <div className="line"></div>
-          <div className="line"></div>
-          <div className="line"></div>
-        </label>
-    
-   
-    </header>
-    )
-  }
-
+export default Header;

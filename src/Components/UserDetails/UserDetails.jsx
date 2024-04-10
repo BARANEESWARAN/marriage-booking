@@ -130,7 +130,10 @@ function UserDetails() {
     return (
         <div>
             <div>
-                <Table loading={loading} columns={columns} />
+                <Table loading={loading} columns={columns}
+                
+                scroll={{ x: 'max-content' }}
+                />
             </div>
         </div>
     );
