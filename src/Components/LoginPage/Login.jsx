@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import "./Login.css"
 
 import { Button, Checkbox, Input ,DatePicker,Drawer } from 'antd';
-import Header from '../Header/Header';
+
 import ForgotPassword from './ForgotPassword';
-import { FacebookOutlined, TwitterOutlined, GoogleOutlined } from '@ant-design/icons';
+import { FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
 import OAuth from '../SocialLoginbtns/OAuth';
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from '@firebase/auth';

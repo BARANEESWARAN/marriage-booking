@@ -143,6 +143,7 @@
   text-decoration: none;
   transition: all 0.4s ease;
   background: #11101d;
+  cursor: pointer;
 }
 .sidebar li a:hover {
   background: #fff;
@@ -171,6 +172,7 @@ color: #11101d !important;
 .sidebar.open li a .links_name {
   opacity: 1;
   pointer-events: auto;
+
 }
 .sidebar li a:hover .links_name,
 .sidebar li a:hover i {
@@ -182,6 +184,7 @@ color: #11101d !important;
   line-height: 50px;
   font-size: 18px;
   border-radius: 12px;
+
 }
 .sidebar li.profile {
   cursor: pointer;
@@ -259,8 +262,14 @@ color: #11101d !important;
 
 i{
   color: #fff;
+  
 }
-
+.logout:hover{
+  color: #11101d;
+}
+.logout span{
+  margin-bottom: 4px;
+}
 :root {
 	--poppins: 'Poppins', sans-serif;
 	--lato: 'Lato', sans-serif;
