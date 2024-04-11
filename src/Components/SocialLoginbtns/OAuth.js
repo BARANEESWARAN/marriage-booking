@@ -4,20 +4,20 @@ import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from
 import { auth } from '../../firebase';
 import { FacebookOutlined, TwitterOutlined, GoogleOutlined } from '@ant-design/icons';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 function OAuth() {
 
 const navigate=useNavigate()
-
+const { id } = useParams();
 
   
   const SignUpUsingGoogle = () => {
 
     const provider = new GoogleAuthProvider()
 
-    console.log("first")
+  
     signInWithPopup(auth, provider)
       .then((result) => {
 
@@ -25,7 +25,7 @@ const navigate=useNavigate()
         // setUserData({ displayName, email })
 
       if(displayName&&email){
-        navigate("/userregister")
+        navigate(`/userregister/${id}`)
       }
       }).catch((error) => {
 
@@ -34,7 +34,7 @@ const navigate=useNavigate()
       });
   }
 
-
+ 
   
 
   return (

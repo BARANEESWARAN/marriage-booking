@@ -1,15 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { DeleteOutlined, EditOutlined, SearchOutlined, InfoCircleFilled } from '@ant-design/icons';
 import { Space, Input, Button, Table, Form, message } from 'antd';
 import Highlighter from 'react-highlight-words';
 import "./UserDetails.css";
+import axios from 'axios';
+import { BaseUrl } from '../../BaseUrl/Url';
 
 function UserDetails() {
     const [loading, setLoading] = useState(false);
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const searchInput = useRef(null);
-
+const [data,setData]=useState()
     const handleSearch = (selectedKeys, confirm, dataIndex) => {
         confirm();
         setSearchText(selectedKeys[0]);
@@ -23,23 +25,23 @@ function UserDetails() {
 
     const columns = [
         {
-            title: 'Package',
-            dataIndex: 'package',
-            key: 'package',
-            sorter: (a, b) => a.package.localeCompare(b.package),
-            ...getColumnSearchProps('package'),
+            title: 'Email',
+            dataIndex: 'email',
+            key: 'email',
+            sorter: (a, b) => a.choosePackage.localeCompare(b.choosePackage),
+            ...getColumnSearchProps('email'),
         },
         {
             title: 'First Name',
-            dataIndex: 'first_name',
-            key: 'first_name',
-            ...getColumnSearchProps('first_name'),
+            dataIndex: 'first name',
+            key: 'first name',
+            ...getColumnSearchProps('first name'),
         },
         {
             title: 'Last Name',
-            dataIndex: 'last_name',
-            key: 'last_name',
-            ...getColumnSearchProps('last_name'),
+            dataIndex: 'last name',
+            key: 'last name',
+            ...getColumnSearchProps('last name'),
         },
         {
             title: 'DOB',
@@ -63,6 +65,7 @@ function UserDetails() {
             ),
         },
     ];
+    
     
 
     function getColumnSearchProps(dataIndex) {
@@ -114,7 +117,22 @@ function UserDetails() {
                 ),
         };
     }
+    const fetchData=async()=>{
+        try{
+            const responce=await axios.get(BaseUrl)
+            console.log("first",responce.data)
+    setData(responce.data)
+            
+        }
+        catch{
+    
+        }
+    }
 
+    useEffect(()=>{
+fetchData()
+
+},[] )
     const handle_delete = async (value) => {
         // Handle delete functionality
     };
@@ -131,7 +149,7 @@ function UserDetails() {
         <div>
             <div>
                 <Table loading={loading} columns={columns}
-                
+                dataSource={data}
                 scroll={{ x: 'max-content' }}
                 />
             </div>

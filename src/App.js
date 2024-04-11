@@ -49,9 +49,9 @@ function App() {
     <Routes>
     <Route path='/' element={<User/>}>
     <Route path='/'  element={<LandingPage/>}/>
-    <Route path='/login'  element={<Login/>}/>
-    <Route path='/userregister'  element={<MyForm/>}/>
-     <Route path='/cardinfo'  element={<CardInfo/>}/>
+    <Route path='/login/:id'  element={<Login/>}/>
+    <Route path='/userregister/:id'  element={<MyForm/>}/>
+     <Route path='/cardinfo/:id'  element={<CardInfo/>}/>
      </Route>
     {/* {user && (
             <>

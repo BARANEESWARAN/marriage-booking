@@ -24,6 +24,7 @@ const[password,setPassword]=useState("")
     const [open, setOpen] = useState(false);
 const navigate=useNavigate()
 
+
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (result) => {
         if (result) {

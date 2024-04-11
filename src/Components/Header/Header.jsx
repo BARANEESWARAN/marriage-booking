@@ -8,14 +8,19 @@ function Header() {
   const [user, setUser] = useState(null);
 const navigate=useNavigate()
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (userinfo) => {
+      setUser(userinfo);
+      console.log(userinfo)
+      if(userinfo) localStorage.setItem("accesstoken",userinfo.email)
     });
 
     return () => unsubscribe();
   }, [user]);
 
+
+ 
   const Logout = () => {
+    localStorage.removeItem("accesstoken")
     signOut(auth)
       .then(() => {
         setUser({});

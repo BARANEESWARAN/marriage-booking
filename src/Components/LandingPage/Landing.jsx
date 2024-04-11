@@ -29,7 +29,7 @@ const Cards = ({ data }) => {
       <p>CVV: {data.CVV}</p>
       <p>Billing Address: {data["BILLING ADDRESS"]}</p>
     
-    <Button className='view-btn' type='primary' onClick={()=>navigate("/login")}>
+    <Button className='view-btn' type='primary' onClick={()=>navigate(`/login/${data.id}`)}>
 
      View
     </Button>
