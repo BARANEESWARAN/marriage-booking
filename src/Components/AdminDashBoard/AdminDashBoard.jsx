@@ -8,7 +8,7 @@ import {
   AppstoreOutlined,
   ContainerOutlined,
   DesktopOutlined,
-
+  DashboardOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   PieChartOutlined,
@@ -37,6 +37,10 @@ const navigate=useNavigate()
   };
   const renderComponent = () => {
     switch (activeOption) {
+
+      case 'Dashboard':
+        return '';
+
       case 'Create Event':
         return '';
 
@@ -56,7 +60,7 @@ const navigate=useNavigate()
       case 'Help & Support':
         return '';
       default:
-        return  'Create Event';
+        return  '';
     }
   };
 
@@ -75,6 +79,15 @@ const navigate=useNavigate()
           }
         </div>
         <ul className="nav-list">
+  <li className={activeOption === 'Dashboard' ? 'active' : ''}>
+    <a onClick={() => handleOptionClick('Dashboard')}>
+      <i><DashboardOutlined /></i>
+      <span className="links_name">Dashboard</span>
+    </a>
+    <span className="tooltip">Dashboard</span>
+  </li>
+
+
   <li className={activeOption === 'Create Event' ? 'active' : ''}>
     <a onClick={() => handleOptionClick('Create Event')}>
       <i><PieChartOutlined /></i>
@@ -82,6 +95,12 @@ const navigate=useNavigate()
     </a>
     <span className="tooltip">Create Event</span>
   </li>
+
+
+
+
+
+  
   <li className={activeOption === 'Schedule' ? 'active' : ''}>
     <a onClick={() => handleOptionClick('Schedule')}>
       <i><DesktopOutlined /></i>
