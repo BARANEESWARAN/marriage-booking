@@ -72,7 +72,7 @@ const navigate=useNavigate()
       
         e.preventDefault();
         if (userName === "venkat@gmail.com" && password === "venkat") {
-      
+      localStorage.setItem("username")
           navigate("/admindashboard");
         }
       };

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Input, Button, Row, Col } from 'antd';
-import { NavLink, useParams } from 'react-router-dom';
+import { Card, Input, Button, Row, Col, message } from 'antd';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const CardInfo = () => {
   const {id}=useParams()
   const [data, setData] = useState(null);
-
+const navigate=useNavigate()
   const [editingId, setEditingId] = useState(id);
   const currentAccessToken= localStorage.getItem("accesstoken")
   const[disable,setDisable]=useState(false)
@@ -108,8 +108,8 @@ const CardInfo = () => {
         });
       }
       
-      
-    
+      message.success("Thankyou, data saved successfully.")
+      navigate("/")
 
   
     } catch (error) {

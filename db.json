@@ -37,7 +37,9 @@
           "remaindernote": "",
           "travelinsurance": "",
           "notes": "",
-          "accesstoken": "baranees1@gmail.com"
+          "accesstoken": "baranees1@gmail.com",
+          "choosePackage": "dfsdfds",
+          "firstName": "asd"
         }
       ],
       "payment": [
@@ -49,7 +51,10 @@
           "expirydate": "a",
           "cvv": "a",
           "billingaddress": "a",
-          "eventid": "064d"
+          "eventid": "064d",
+          "firstName": "asd",
+          "lastName": "sad",
+          "creditCardType": "a"
         }
       ]
     },
@@ -89,7 +94,8 @@
           "depositdue": "",
           "remaindernote": "",
           "travelinsurance": "",
-          "notes": ""
+          "notes": "",
+          "choosePackage": "dfsdfds"
         }
       ],
       "payment": [
@@ -101,7 +107,8 @@
           "expirydate": "a",
           "cvv": "a",
           "billingaddress": "a",
-          "eventid": "2"
+          "eventid": "2",
+          "firstName": "asd"
         }
       ]
     },

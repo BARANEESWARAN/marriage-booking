@@ -16,10 +16,11 @@ import {
 } from '@ant-design/icons';
 import UserDetails from '../UserDetails/UserDetails';
 import { useNavigate } from 'react-router-dom';
+import Dashboard from '../Dashboard/Dashboard';
 
 function AdminDashBoard() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeOption, setActiveOption] = useState('User Details');
+  const [activeOption, setActiveOption] = useState('Dashboard');
 const navigate=useNavigate()
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -39,7 +40,7 @@ const navigate=useNavigate()
     switch (activeOption) {
 
       case 'Dashboard':
-        return '';
+        return <Dashboard/>;
 
       case 'Create Event':
         return '';

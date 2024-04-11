@@ -9,6 +9,16 @@ import { BaseUrl } from '../../BaseUrl/Url';
 // Define a Card component
 const Cards = ({ data }) => {
   const navigate=useNavigate()
+const accesstoken=localStorage.getItem("accesstoken")
+  const handleClick=()=>{
+    if(accesstoken){
+      navigate(`/userregister/${data.id}`)
+    }
+    else{
+      navigate(`/login/${data.id}`)
+    }
+
+  }
   return (
     <Card className="card">
       <h2>{data["FIRST NAME"]} {data["LAST NAME"]}</h2>
@@ -29,7 +39,7 @@ const Cards = ({ data }) => {
       <p>CVV: {data.CVV}</p>
       <p>Billing Address: {data["BILLING ADDRESS"]}</p>
     
-    <Button className='view-btn' type='primary' onClick={()=>navigate(`/login/${data.id}`)}>
+    <Button className='view-btn' type='primary' onClick={handleClick}>
 
      View
     </Button>

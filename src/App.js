@@ -11,6 +11,7 @@ import CardInfo from './Components/UserRegister/CardInfo';
 
 import { auth } from './firebase';
 import User from './Components/ProtectedRouter/User';
+import ViewCard from './Components/ViewCard/ViewCard';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -52,6 +53,7 @@ function App() {
     <Route path='/login/:id'  element={<Login/>}/>
     <Route path='/userregister/:id'  element={<MyForm/>}/>
      <Route path='/cardinfo/:id'  element={<CardInfo/>}/>
+     <Route path='/viewcard/:id'  element={<ViewCard/>}/>
      </Route>
     {/* {user && (
             <>
