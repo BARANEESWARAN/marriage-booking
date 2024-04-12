@@ -3,6 +3,7 @@ import { Card, Input, Button, Row, Col, message, DatePicker } from "antd";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./CreateEvent.css";
+import moment from "moment";
 
 const CreateEvent = () => {
   const { id } = useParams();
@@ -44,6 +45,12 @@ const CreateEvent = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+
+  const handleDateChange = (date,dateString) => {
+    console.log(dateString,"??,date")
+  }
+
+  console.log(formData.startdate,"???,startdate")
 
   return (
     <>
@@ -97,8 +104,8 @@ const CreateEvent = () => {
                   <label>Start Date</label>
                   <DatePicker
                     name="startdate"
-                    value={formData.startdate}
-                    onChange={handleChange}
+                    // value={formData.startdate}
+                    onChange={(date, dateString) => setFormData({...formData, startdate: dateString})}
                     disabled={disable}
                   />
                 </div>
@@ -110,7 +117,7 @@ const CreateEvent = () => {
                   <DatePicker
                     name="enddate"
                     value={formData.enddate}
-                    onChange={handleChange}
+                    onChange={(date, dateString) => setFormData({...formData, startdate: dateString})}
                     disabled={disable}
                   />
                 </div>

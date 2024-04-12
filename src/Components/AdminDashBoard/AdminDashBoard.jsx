@@ -12,7 +12,7 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   PieChartOutlined,
- 
+
 } from '@ant-design/icons';
 import UserDetails from '../UserDetails/UserDetails';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ import CreateEvent from '../CreateEvent/CreateEvent';
 function AdminDashBoard() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeOption, setActiveOption] = useState('Dashboard');
-const navigate=useNavigate()
+  const navigate = useNavigate()
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
@@ -32,37 +32,37 @@ const navigate=useNavigate()
   };
 
   const Logout = () => {
-   
-        navigate("/")
-       
-     
+
+    navigate("/")
+
+
   };
   const renderComponent = () => {
     switch (activeOption) {
 
       case 'Dashboard':
-        return <Dashboard/>;
+        return <Dashboard />;
 
       case 'Create Event':
-        return <CreateEvent/>;
+        return <CreateEvent />;
 
-        case 'Schedule':
-          return '';
+      case 'Schedule':
+        return '';
 
       case 'User Details':
         return (
-          <div style={{padding:"3rem 0",width:"95%",margin:"0 auto"}}>
-          <UserDetails />
+          <div style={{ padding: "3rem 0", width: "95%", margin: "0 auto" }}>
+            <UserDetails />
           </div>
         );
-    
+
       case 'My Profile':
         return '';
-  
+
       case 'Help & Support':
         return '';
       default:
-        return  '';
+        return '';
     }
   };
 
@@ -81,96 +81,96 @@ const navigate=useNavigate()
           }
         </div>
         <ul className="nav-list">
-  <li className={activeOption === 'Dashboard' ? 'active' : ''}>
-    <a onClick={() => handleOptionClick('Dashboard')}>
-      <i><DashboardOutlined /></i>
-      <span className="links_name">Dashboard</span>
-    </a>
-    <span className="tooltip">Dashboard</span>
-  </li>
+          <li className={activeOption === 'Dashboard' ? 'active' : ''}>
+            <a onClick={() => handleOptionClick('Dashboard')}>
+              <i><DashboardOutlined /></i>
+              <span className="links_name">Dashboard</span>
+            </a>
+            <span className="tooltip">Dashboard</span>
+          </li>
 
 
-  <li className={activeOption === 'Create Event' ? 'active' : ''}>
-    <a onClick={() => handleOptionClick('Create Event')}>
-      <i><PieChartOutlined /></i>
-      <span className="links_name">Create Event</span>
-    </a>
-    <span className="tooltip">Create Event</span>
-  </li>
+          <li className={activeOption === 'Create Event' ? 'active' : ''}>
+            <a onClick={() => handleOptionClick('Create Event')}>
+              <i><PieChartOutlined /></i>
+              <span className="links_name">Create Event</span>
+            </a>
+            <span className="tooltip">Create Event</span>
+          </li>
 
 
 
 
 
-  
-  <li className={activeOption === 'Schedule' ? 'active' : ''}>
-    <a onClick={() => handleOptionClick('Schedule')}>
-      <i><DesktopOutlined /></i>
-      <span className="links_name">Schedule</span>
-    </a>
-    <span className="tooltip">Schedule</span>
-  </li>
-  <li className={activeOption === 'User Details' ? 'active' : ''}>
-    <a onClick={() => handleOptionClick('User Details')}>
-      <i><ContainerOutlined /></i>
-      <span className="links_name">User Details</span>
-    </a>
-    <span className="tooltip">User Details</span>
-  </li>
-  <li className={activeOption === 'My Profile' ? 'active' : ''}>
-    <a onClick={() => handleOptionClick('My Profile')}>
-      <i><AppstoreOutlined /></i>
-      <span className="links_name">My Profile</span>
-    </a>
-    <span className="tooltip">My Profile</span>
-  </li>
-  <li className={activeOption === 'Help & Support' ? 'active' : ''}>
-    <a onClick={() => handleOptionClick('Help & Support')}>
-      <i><MenuUnfoldOutlined /></i>
-      <span className="links_name">Help & Support</span>
-    </a>
-    <span className="tooltip">Help & Support</span>
-  </li>
-  <li className="profile">
-    {isOpen ? (
-      <a className="logout" onClick={Logout}>
-        <i><BiLogOut /></i>
-        <span>Logout</span>
-      </a>
-    ) : (
-      <a className="logout" onClick={Logout}>
-        <i><BiLogOut /></i>
-      </a>
-    )}
-  </li>
-</ul>
+
+          <li className={activeOption === 'Schedule' ? 'active' : ''}>
+            <a onClick={() => handleOptionClick('Schedule')}>
+              <i><DesktopOutlined /></i>
+              <span className="links_name">Schedule</span>
+            </a>
+            <span className="tooltip">Schedule</span>
+          </li>
+          <li className={activeOption === 'User Details' ? 'active' : ''}>
+            <a onClick={() => handleOptionClick('User Details')}>
+              <i><ContainerOutlined /></i>
+              <span className="links_name">User Details</span>
+            </a>
+            <span className="tooltip">User Details</span>
+          </li>
+          <li className={activeOption === 'My Profile' ? 'active' : ''}>
+            <a onClick={() => handleOptionClick('My Profile')}>
+              <i><AppstoreOutlined /></i>
+              <span className="links_name">My Profile</span>
+            </a>
+            <span className="tooltip">My Profile</span>
+          </li>
+          <li className={activeOption === 'Help & Support' ? 'active' : ''}>
+            <a onClick={() => handleOptionClick('Help & Support')}>
+              <i><MenuUnfoldOutlined /></i>
+              <span className="links_name">Help & Support</span>
+            </a>
+            <span className="tooltip">Help & Support</span>
+          </li>
+          <li className="profile">
+            {isOpen ? (
+              <a className="logout" onClick={Logout}>
+                <i><BiLogOut /></i>
+                <span>Logout</span>
+              </a>
+            ) : (
+              <a className="logout" onClick={Logout}>
+                <i><BiLogOut /></i>
+              </a>
+            )}
+          </li>
+        </ul>
 
       </div>
       <section className="home-section">
 
-      <section id="content">
-      <nav>
+        <section id="content">
+          <nav>
 
-			<h4>{activeOption}</h4>
-			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search..."/>
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
-			</form>
-			<input type="checkbox" id="switch-mode" hidden />
+            <h4>{activeOption}</h4>
+            <form action="#">
+              <div class="form-input">
+                <input type="search" placeholder="Search..." />
+                <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+              </div>
+            </form>
+            <input type="checkbox" id="switch-mode" hidden />
 
-			<a href="#" class="notification">
-      <IoNotifications />
-				<span class="num">8</span>
-			</a>
-			<a href="#" class="profile">
-				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw2iMTKL4JKh2Rc0f2RtU8-2QQr-Jj-9TVTA&s"/>
-			</a>
-		</nav>
-    </section>
+            <a href="#" class="notification">
+              <IoNotifications />
+              <span class="num">8</span>
+            </a>
+            <a href="#" class="profile">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw2iMTKL4JKh2Rc0f2RtU8-2QQr-Jj-9TVTA&s" />
+            </a>
+          </nav>
+        </section>
 
-      {renderComponent()}
+        {renderComponent()}
 
       </section>
     </>
