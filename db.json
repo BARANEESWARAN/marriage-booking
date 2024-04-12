@@ -38,8 +38,8 @@
           "travelinsurance": "",
           "notes": "",
           "accesstoken": "baranees1@gmail.com",
-          "choosePackage": "dfsdfds",
-          "firstName": "asd"
+          "choosePackage": "dfs",
+          "firstName": "a"
         }
       ],
       "payment": [
@@ -49,12 +49,13 @@
           "creditcardtype": "a",
           "creditcardnumber": "a",
           "expirydate": "a",
-          "cvv": "a",
+          "cvv": "agg",
           "billingaddress": "a",
           "eventid": "064d",
-          "firstName": "asd",
-          "lastName": "sad",
-          "creditCardType": "a"
+          "firstName": "as",
+          "lastName": "s",
+          "creditCardType": "a",
+          "expiryDate": "gg"
         }
       ]
     },
