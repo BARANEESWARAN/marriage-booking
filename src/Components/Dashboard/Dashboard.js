@@ -17,6 +17,7 @@ import axios from "axios";
 import { BaseUrl } from "../../BaseUrl/Url";
 import ViewCard from "../ViewCard/ViewCard";
 import dayjs from "dayjs";
+import moment from "moment";
 
 // Define a Card component
 
@@ -106,6 +107,7 @@ const Dashboard = () => {
       console.error("Error adding/updating data:", error);
     } finally {
       fetchData();
+      handleClear()
     }
   };
 
@@ -139,13 +141,12 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:8000/data/${id}`);
-      const newData = data.filter(item => item.id !== id);
+      const newData = data.filter((item) => item.id !== id);
       setData(newData);
     } catch (error) {
       console.error("Error deleting data:", error);
     }
-  }
-  
+  };
 
   // const handleDelete = async (id) => {
   //   setEditingId(id);
@@ -168,6 +169,15 @@ const Dashboard = () => {
   //     fetchData();
   //   }
   // };
+
+  const handleClear = () => {
+    setFormData({
+      eventname: "",
+      startdate: "",
+      enddate: "",
+      location: "",
+    });
+  };
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -247,6 +257,21 @@ const Dashboard = () => {
     );
   };
 
+  const handleDateChange = (date, dateString) => {
+    if (date) {
+      // Check if date is not null or undefined
+      setFormData({ ...formData, startdate: dateString });
+      // setFormData({ ...formData, enddate: dateString });
+    } else {
+      // Handle case where date is null or undefined
+      // For example, set startdate to an empty string or some default value
+      setFormData({ ...formData, startdate: "" });
+      // setFormData({ ...formData, enddate: dateString });
+    }
+  };
+
+  console.log(formData.startdate, "??,date");
+
   return (
     <>
       <Modal
@@ -286,10 +311,8 @@ const Dashboard = () => {
                 <DatePicker
                   style={{ width: "100%" }}
                   name="startdate"
-                  // value={formData.startdate}
-                  onChange={(date, dateString) =>
-                    setFormData({ ...formData, startdate: dateString })
-                  }
+                  value={formData.startdate ? moment(formData.startdate) : null}
+                  onChange={(date,dateString) => setFormData({ ...formData, startdate: dateString })}
                 />
               </div>
             </Col>
@@ -300,7 +323,7 @@ const Dashboard = () => {
                 <DatePicker
                   style={{ width: "100%" }}
                   name="enddate"
-                  // value={formData.enddate}
+                  value={formData.enddate ? moment(formData.enddate) : null}
                   onChange={(date, dateString) =>
                     setFormData({ ...formData, enddate: dateString })
                   }

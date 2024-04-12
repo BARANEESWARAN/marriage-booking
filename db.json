@@ -1,6 +1,16 @@
 {
   "data": [
     {
+<<<<<<< HEAD
+=======
+      "id": "2254",
+      "eventname": "event 1",
+      "startdate": "2024-04-01",
+      "enddate": "2024-04-30",
+      "location": "location 1"
+    },
+    {
+>>>>>>> 28b1e36c04d9ae85388952f3f734ccfa94b8a3e1
       "id": "2",
       "eventname": "event 2",
       "startdate": "2024-05-20",
@@ -94,18 +104,58 @@
           "travelInsurance": "",
           "notes": "",
           "accesstoken": "baranees1@gmail.com"
+<<<<<<< HEAD
+=======
+        },
+        {
+          "choosePackage": "Package 1",
+          "firstName": "Prasanth",
+          "lastName": "A",
+          "title": "title",
+          "dob": "",
+          "room": "2",
+          "bedding": "bedd",
+          "email": "prasanthneo24@gmail.com",
+          "phoneNumber": "536346",
+          "mobileNumber": "66646",
+          "amountDue": "666",
+          "depositDue": "666",
+          "remainderDue": "4444",
+          "travelInsurance": "555",
+          "notes": "nothing",
+          "accesstoken": "prasanthneo24@gmail.com"
+>>>>>>> 28b1e36c04d9ae85388952f3f734ccfa94b8a3e1
         }
       ],
       "payment": [
         {
+<<<<<<< HEAD
           "firstName": "asd",
           "lastName": "sad",
+=======
+          "firstName": "Prasanth",
+          "lastName": "A",
+>>>>>>> 28b1e36c04d9ae85388952f3f734ccfa94b8a3e1
           "creditCardType": "",
           "creditCardNumber": "",
           "expiryDate": "",
           "cvv": "",
           "billingAddress": "",
+<<<<<<< HEAD
           "eventid": "5893"
+=======
+          "email": "baranees1@gmail.com"
+        },
+        {
+          "firstName": "Prasanth",
+          "lastName": "Barani",
+          "creditCardType": "",
+          "creditCardNumber": "",
+          "expiryDate": "",
+          "cvv": "",
+          "billingAddress": "",
+          "email": "prasanthneo24@gmail.com"
+>>>>>>> 28b1e36c04d9ae85388952f3f734ccfa94b8a3e1
         }
       ]
     }
