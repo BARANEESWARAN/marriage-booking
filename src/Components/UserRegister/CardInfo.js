@@ -18,7 +18,7 @@ const CardInfo = () => {
     expiryDate: "",
     cvv: "",
     billingAddress: "",
-    eventid: id,
+    email: currentAccessToken,
   });
 
   const handleChange = (e) => {
@@ -34,7 +34,7 @@ const CardInfo = () => {
       if (userData && userData.payment) {
         // If user data exists, filter it based on access token
         const currentUserData = userData.payment.find(
-          (payment) => payment.eventid === id
+          (payment) => payment.email === currentAccessToken
         );
 
         if (currentUserData) {
@@ -69,10 +69,10 @@ const CardInfo = () => {
                 ...item,
                 payment: [{ ...formData }],
               };
-            } else if (item.payment.some((payment) => payment.eventid === id)) {
+            } else if (item.payment.some((payment) => payment.email === currentAccessToken)) {
               // If user array exists and user with matching email exists, update the user object
               const updatedUserArray = item.payment.map((payment) => {
-                if (payment.eventid === id) {
+                if (payment.email === currentAccessToken) {
                   return { ...payment, ...formData };
                 }
                 return payment;

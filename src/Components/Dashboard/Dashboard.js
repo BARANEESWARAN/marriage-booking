@@ -94,19 +94,20 @@ const Dashboard = () => {
   };
 
   const handleSubmit = async (e) => {
+    handleClear()
     try {
-      await axios.post("http://localhost:8000/data", {
-        ...formData,
-      });
+      // await axios.post("http://localhost:8000/data", {
+      //   ...formData,
+      // });
 
-      message.success("Thankyou, data saved successfully.");
-      handleCancel();
+      // message.success("Thankyou, data saved successfully.");
+      // handleCancel();
       // navigate("/");
     } catch (error) {
       console.error("Error adding/updating data:", error);
     } finally {
       fetchData();
-      handleClear()
+      // handleClear()
     }
   };
 
@@ -256,6 +257,8 @@ const Dashboard = () => {
     );
   };
 
+  console.log(formData.startdate,"??,date")
+
   return (
     <>
       <Modal
@@ -295,7 +298,7 @@ const Dashboard = () => {
                 <DatePicker
                   style={{ width: "100%" }}
                   name="startdate"
-                  // value={formData.startdate}
+                  value={formData.startdate}
                   onChange={(date, dateString) =>
                     setFormData({ ...formData, startdate: dateString })
                   }
@@ -309,7 +312,7 @@ const Dashboard = () => {
                 <DatePicker
                   style={{ width: "100%" }}
                   name="enddate"
-                  // value={formData.enddate}
+                  value={formData.enddate}
                   onChange={(date, dateString) =>
                     setFormData({ ...formData, enddate: dateString })
                   }
