@@ -1,40 +1,38 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import {
-  signInWithPopup,
-  GoogleAuthProvider,
-  signOut,
-  onAuthStateChanged,
-} from "firebase/auth";
-import { auth } from "../../firebase";
-import {
-  FacebookOutlined,
-  TwitterOutlined,
-  GoogleOutlined,
-} from "@ant-design/icons";
+import React from 'react'
+import { useEffect, useState } from 'react';
+import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth";
+import { auth } from '../../firebase';
+import { FacebookOutlined, TwitterOutlined, GoogleOutlined } from '@ant-design/icons';
+
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useNavigate } from "react-router-dom";
 
 function OAuth() {
-  const navigate = useNavigate();
 
+const navigate=useNavigate()
+const { id } = useParams();
+
+  
   const SignUpUsingGoogle = () => {
     const provider = new GoogleAuthProvider();
 
-    console.log("first");
     signInWithPopup(auth, provider)
       .then((result) => {
         const { displayName, email } = result.user;
         // setUserData({ displayName, email })
 
-        if (displayName && email) {
-          navigate("/");
-        }
-      })
-      .catch((error) => {
+      if(displayName&&email){
+        navigate(`/userregister/${id}`)
+      }
+      }).catch((error) => {
+
         console.log({ error });
       });
-  };
+  }
+
+ 
+  
 
   return (
     <div>

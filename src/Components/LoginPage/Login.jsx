@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import "./Login.css"
 
 import { Button, Checkbox, Input, DatePicker, Drawer } from 'antd';
-import Header from '../Header/Header';
+
 import ForgotPassword from './ForgotPassword';
-import { FacebookOutlined, TwitterOutlined, GoogleOutlined } from '@ant-design/icons';
+import { FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
 import OAuth from '../SocialLoginbtns/OAuth';
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from '@firebase/auth';
@@ -19,9 +19,11 @@ import { auth } from '../../firebase';
 function Login() {
   const [counter, setCounter] = useState(1);
   const [register, setRegister] = useState(true)
-
+  const [userName, setUserName] = useState("")
+  const [password, setPassword] = useState("")
   const [open, setOpen] = useState(false);
   const navigate = useNavigate()
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (result) => {
@@ -53,7 +55,7 @@ function Login() {
   };
   useEffect(() => {
     const interval = setInterval(() => {
-      document.getElementById(`radio${counter}`).checked = true;
+      document.getElementById(radio${ counter }).checked = true;
       setCounter((prevCounter) => (prevCounter % 4) + 1);
     }, 3000);
 
@@ -66,8 +68,17 @@ function Login() {
     console.log(date, dateString);
   };
 
+  const handleSubmit = (e) => {
+
+    e.preventDefault();
+    if (userName === "venkat@gmail.com" && password === "venkat") {
+      localStorage.setItem("username")
+      navigate("/admindashboard");
+    }
+  };
 
 
+  console.log({ userName, password })
   return (
     <>
 
@@ -136,10 +147,10 @@ function Login() {
                       <form className="login-form">
                         <h2 className="login-header">Log in</h2>
 
-                        <Input className='input-field' type="email" placeholder="Email" />
+                        <Input className='input-field' type="email" placeholder="Email" onChange={(e) => setUserName(e.target.value)} />
 
 
-                        <Input.Password className='input-field' type="password" placeholder="Password" />
+                        <Input.Password className='input-field' type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
 
                         <div className='forgot-password'>
                           <div className='remember'>
@@ -153,7 +164,7 @@ function Login() {
                           </span>
                         </div>
                         <div className='login-btns '>
-                          <button className='submit-btn' >Login</button>
+                          <button className='submit-btn' onClick={handleSubmit} >Login</button>
 
 
                         </div>
@@ -250,7 +261,3 @@ function Login() {
 }
 
 export default Login
-
-
-
-

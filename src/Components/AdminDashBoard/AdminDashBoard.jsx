@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 import "./AdminDashBoard.css";
 import { BiLogOut } from "react-icons/bi";
-import { FacebookOutlined, TwitterOutlined, GoogleOutlined } from '@ant-design/icons';
+import { IoNotifications } from "react-icons/io5";
+
+
 import {
   AppstoreOutlined,
   ContainerOutlined,
   DesktopOutlined,
-  MailOutlined,
+  DashboardOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   PieChartOutlined,
-  ProfileOutlined,
-  HomeOutlined
+ 
 } from '@ant-design/icons';
 import UserDetails from '../UserDetails/UserDetails';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Dashboard from '../Dashboard/Dashboard';
 
 function AdminDashBoard() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeOption, setActiveOption] = useState('user-details');
-
+  const [activeOption, setActiveOption] = useState('Dashboard');
+const navigate=useNavigate()
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
@@ -28,28 +30,38 @@ function AdminDashBoard() {
     setActiveOption(option);
   };
 
+  const Logout = () => {
+   
+        navigate("/")
+       
+     
+  };
   const renderComponent = () => {
     switch (activeOption) {
-      case 'home':
-        return 'home';
-      case 'dashboard':
-        return  'dashboard';
-      case 'schedule':
-        return 'schedule';
-      case 'user-details':
+
+      case 'Dashboard':
+        return <Dashboard/>;
+
+      case 'Create Event':
+        return '';
+
+        case 'Schedule':
+          return '';
+
+      case 'User Details':
         return (
-          <div style={{padding:"3rem 2rem 0 2rem"}}>
+          <div style={{padding:"3rem 0",width:"95%",margin:"0 auto"}}>
           <UserDetails />
           </div>
         );
-      case 'notification':
-        return 'notification';
-      case 'my-profile':
-        return 'my-profile';
-      case 'help-support':
-        return 'help-support';
+    
+      case 'My Profile':
+        return '';
+  
+      case 'Help & Support':
+        return '';
       default:
-        return  'home';
+        return  '';
     }
   };
 
@@ -68,77 +80,94 @@ function AdminDashBoard() {
           }
         </div>
         <ul className="nav-list">
-          <li className={activeOption === 'home' ? 'active' : ''}>
-            <a  onClick={() => handleOptionClick('home')}>
-              <NavLink to={"/"}>
+  <li className={activeOption === 'Dashboard' ? 'active' : ''}>
+    <a onClick={() => handleOptionClick('Dashboard')}>
+      <i><DashboardOutlined /></i>
+      <span className="links_name">Dashboard</span>
+    </a>
+    <span className="tooltip">Dashboard</span>
+  </li>
 
-             
-              <i><HomeOutlined /></i>
-              <span className="links_name">Home</span>
-              </NavLink>
-            </a>
-            <span className="tooltip">Home</span>
-          </li>
-          <li className={activeOption === 'dashboard' ? 'active' : ''}>
-            <a href="#" onClick={() => handleOptionClick('dashboard')}>
-              <i><PieChartOutlined /></i>
-              <span className="links_name">Dashboard</span>
-            </a>
-            <span className="tooltip">Dashboard</span>
-          </li>
-          <li className={activeOption === 'schedule' ? 'active' : ''}>
-            <a href="#" onClick={() => handleOptionClick('schedule')}>
-              <i><DesktopOutlined /></i>
-              <span className="links_name">Schedule</span>
-            </a>
-            <span className="tooltip">Schedule</span>
-          </li>
-          <li className={activeOption === 'user-details' ? 'active' : ''}>
-            <a href="#" onClick={() => handleOptionClick('user-details')}>
-              <i><ContainerOutlined /></i>
-              <span className="links_name">User Details</span>
-            </a>
-            <span className="tooltip">User Details</span>
-          </li>
-          <li className={activeOption === 'notification' ? 'active' : ''}>
-            <a href="#" onClick={() => handleOptionClick('notification')}>
-              <i><MailOutlined /></i>
-              <span className="links_name">Notification </span>
-            </a>
-            <span className="tooltip">Notification </span>
-          </li>
-          <li className={activeOption === 'my-profile' ? 'active' : ''}>
-            <a href="#" onClick={() => handleOptionClick('my-profile')}>
-              <i><AppstoreOutlined /></i>
-              <span className="links_name">My Profile</span>
-            </a>
-            <span className="tooltip">My Profile</span>
-          </li>
-          <li className={activeOption === 'help-support' ? 'active' : ''}>
-            <a href="#" onClick={() => handleOptionClick('help-support')}>
-              <i><MenuUnfoldOutlined /></i>
-              <span className="links_name">Help & Support</span>
-            </a>
-            <span className="tooltip">Help & Support</span>
-          </li>
-          <li className="profile">
-            {
-              isOpen ?
-                (
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start" }}>
-                    <i style={{ fontSize: "1.3rem" }}><BiLogOut /></i>
-                    <div style={{ marginBottom: "7px", fontSize: "1rem" }}>Logout</div>
-                  </div>
-                )
-                :
-                (
-                  <i style={{ display: "flex", alignItems: "center", justifyContent: "center" }}><BiLogOut /></i>
-                )
-            }
-          </li>
-        </ul>
+
+  <li className={activeOption === 'Create Event' ? 'active' : ''}>
+    <a onClick={() => handleOptionClick('Create Event')}>
+      <i><PieChartOutlined /></i>
+      <span className="links_name">Create Event</span>
+    </a>
+    <span className="tooltip">Create Event</span>
+  </li>
+
+
+
+
+
+  
+  <li className={activeOption === 'Schedule' ? 'active' : ''}>
+    <a onClick={() => handleOptionClick('Schedule')}>
+      <i><DesktopOutlined /></i>
+      <span className="links_name">Schedule</span>
+    </a>
+    <span className="tooltip">Schedule</span>
+  </li>
+  <li className={activeOption === 'User Details' ? 'active' : ''}>
+    <a onClick={() => handleOptionClick('User Details')}>
+      <i><ContainerOutlined /></i>
+      <span className="links_name">User Details</span>
+    </a>
+    <span className="tooltip">User Details</span>
+  </li>
+  <li className={activeOption === 'My Profile' ? 'active' : ''}>
+    <a onClick={() => handleOptionClick('My Profile')}>
+      <i><AppstoreOutlined /></i>
+      <span className="links_name">My Profile</span>
+    </a>
+    <span className="tooltip">My Profile</span>
+  </li>
+  <li className={activeOption === 'Help & Support' ? 'active' : ''}>
+    <a onClick={() => handleOptionClick('Help & Support')}>
+      <i><MenuUnfoldOutlined /></i>
+      <span className="links_name">Help & Support</span>
+    </a>
+    <span className="tooltip">Help & Support</span>
+  </li>
+  <li className="profile">
+    {isOpen ? (
+      <a className="logout" onClick={Logout}>
+        <i><BiLogOut /></i>
+        <span>Logout</span>
+      </a>
+    ) : (
+      <a className="logout" onClick={Logout}>
+        <i><BiLogOut /></i>
+      </a>
+    )}
+  </li>
+</ul>
+
       </div>
       <section className="home-section">
+
+      <section id="content">
+      <nav>
+
+			<h4>{activeOption}</h4>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search..."/>
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden />
+
+			<a href="#" class="notification">
+      <IoNotifications />
+				<span class="num">8</span>
+			</a>
+			<a href="#" class="profile">
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw2iMTKL4JKh2Rc0f2RtU8-2QQr-Jj-9TVTA&s"/>
+			</a>
+		</nav>
+    </section>
 
       {renderComponent()}
 
