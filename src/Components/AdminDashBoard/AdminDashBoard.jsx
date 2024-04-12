@@ -17,6 +17,7 @@ import {
 import UserDetails from '../UserDetails/UserDetails';
 import { useNavigate } from 'react-router-dom';
 import Dashboard from '../Dashboard/Dashboard';
+import CreateEvent from '../CreateEvent/CreateEvent';
 
 function AdminDashBoard() {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +44,7 @@ const navigate=useNavigate()
         return <Dashboard/>;
 
       case 'Create Event':
-        return '';
+        return <CreateEvent/>;
 
         case 'Schedule':
           return '';

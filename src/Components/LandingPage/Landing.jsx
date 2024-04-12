@@ -8,109 +8,112 @@ import { BaseUrl } from '../../BaseUrl/Url';
 
 // Define a Card component
 const Cards = ({ data }) => {
-  const navigate=useNavigate()
-const accesstoken=localStorage.getItem("accesstoken")
-  const handleClick=()=>{
-    if(accesstoken){
+  const navigate = useNavigate()
+  const accesstoken = localStorage.getItem("accesstoken")
+  const handleClick = () => {
+    if (accesstoken) {
       navigate(`/userregister/${data.id}`)
     }
-    else{
+    else {
       navigate(`/login/${data.id}`)
     }
 
   }
   return (
     <Card className="card">
-      <h2>{data["FIRST NAME"]} {data["LAST NAME"]}</h2>
-      <p>Title: {data.TITLE}</p>
-      <p>DOB: {data.DOB}</p>
-      <p>Room: {data.ROOM}</p>
-      <p>Bedding: {data.BEDDING}</p>
-      <p>Email: {data.EMAIL}</p>
-      <p>Phone Number: {data["PHONE NUMBER"]}</p>
-      <p>Notes: {data.NOTES}</p>
-      <p>Amount Due: {data["AMOUNT DUE"]}</p>
-      <p>Deposit Due: {data["DEPOSIT DUE"]}</p>
-      <p>Remainder Due: {data["REMAINDER DUE"]}</p>
-      <p>Travel Insurance: {data["TRAVEL INSURANCE"]}</p>
-      <p>Credit Card Type: {data["CREDIT CARD TYPE"]}</p>
-      <p>Credit Card Number: {data["CREDIT CARD NUMBER"]}</p>
-      <p>Expiry Date: {data["EXPIRY DATE (MM/YY)"]}</p>
-      <p>CVV: {data.CVV}</p>
-      <p>Billing Address: {data["BILLING ADDRESS"]}</p>
-    
-    <Button className='view-btn' type='primary' onClick={handleClick}>
+      <h2>{data["first name"]} {data["last name"]}</h2>
+      <p>Title: {data.title}</p>
+      <p>DOB: {data.dob}</p>
+      <p>Room: {data.room}</p>
+      <p>Bedding: {data.bedding}</p>
+      <p>Email: {data.email}</p>
+      <p>Phone Number: {data["phone number"]}</p>
+      <p>Notes: {data.notes}</p>
+      <p>Amount Due: {data["amount due"]}</p>
+      <p>Deposit Due: {data["deposit due"]}</p>
+      <p>Remainder Due: {data["remainder due"]}</p>
+      <p>Travel Insurance: {data["travel insurance"]}</p>
+      <p>Credit Card Type: {data["credit card type"]}</p>
+      <p>Credit Card Number: {data["credit card number"]}</p>
+      <p>Expiry Date: {data["expiry date (mm/yy)"]}</p>
+      <p>CVV: {data.cvv}</p>
+      <p>Billing Address: {data["billing address"]}</p>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "1rem" }}>
 
-     View
-    </Button>
+
+        <Button className='view-btn' type='primary' onClick={handleClick}>
+
+          View
+        </Button>
+      </div>
     </Card>
   );
 };
 
 const LandingPage = () => {
 
-const[data,setData]=useState()
-const[loading,setLoading]=useState(true)
-  useEffect(()=>{
+  const [data, setData] = useState()
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
 
-    const getData=async()=>{
+    const getData = async () => {
 
       setLoading(true)
-    try{
-      const result= await axios.get(BaseUrl)
-      setData(result.data)
-     setLoading(false)
-      console.log("first",result.data)
-    }
+      try {
+        const result = await axios.get(BaseUrl)
+        setData(result.data)
+        setLoading(false)
+        console.log("first", result.data)
+      }
 
-    catch{
-      setLoading(false)
-    }
-    finally{
-      setLoading(false)
-    }
-
-
+      catch {
+        setLoading(false)
+      }
+      finally {
+        setLoading(false)
+      }
 
 
-    
+
+
+
     }
     getData()
-    },[])
+  }, [])
 
 
-  
-  
+
+
 
   return (
     <>
-   
-{
-  loading===false?
-  (
-    <div className='card-container'>
-    {data&&data.map((card) => (
-      <Cards
-        key={card.id}
-        data={card}
-      />
-    ))}
-  </div>
 
-    
-  ):
-  (
-    <div className='loader'>
-<div className="custom-loader"></div>
-    </div>
-
-  )
-}
+      {
+        loading === false ?
+          (
+            <div className='card-container'>
+              {data && data.map((card) => (
+                <Cards
+                  key={card.id}
+                  data={card}
+                />
+              ))}
+            </div>
 
 
+          ) :
+          (
+            <div className='loader'>
+              <div className="custom-loader"></div>
+            </div>
+
+          )
+      }
 
 
-   
+
+
+
     </>
   );
 };
