@@ -106,6 +106,7 @@ const Dashboard = () => {
       console.error("Error adding/updating data:", error);
     } finally {
       fetchData();
+      handleClear()
     }
   };
 
@@ -167,6 +168,15 @@ const Dashboard = () => {
   //     fetchData();
   //   }
   // };
+
+  const handleClear =() => {
+    setFormData({
+      eventname: "",
+      startdate: "",
+      enddate: "",
+      location: "",
+    })
+  }
 
   const showModal = () => {
     setIsModalOpen(true);
