@@ -99,7 +99,7 @@ const Dashboard = () => {
         ...formData,
       });
 
-      message.success("Thankyou, data saved successfully.");
+      message.success("Event Created successfully.");
       handleCancel();
       // navigate("/");
     } catch (error) {
@@ -127,6 +127,7 @@ const Dashboard = () => {
         `http://localhost:8000/data/${editingId}`,
         updatedData.find((item) => item.id === editingId)
       );
+      message.success("Event updated successfully.");
     } catch (error) {
       console.error("Error adding/updating data:", error);
     } finally {
