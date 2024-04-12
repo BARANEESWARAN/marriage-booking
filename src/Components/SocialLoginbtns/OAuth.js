@@ -1,49 +1,48 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
-import { signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth";
-import { auth } from '../../firebase';
-import { FacebookOutlined, TwitterOutlined, GoogleOutlined } from '@ant-design/icons';
+import React from "react";
+import { useEffect, useState } from "react";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { auth } from "../../firebase";
+import {
+  FacebookOutlined,
+  TwitterOutlined,
+  GoogleOutlined,
+} from "@ant-design/icons";
 
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 function OAuth() {
+  const navigate = useNavigate();
 
-const navigate=useNavigate()
-
-
-  
   const SignUpUsingGoogle = () => {
+    const provider = new GoogleAuthProvider();
 
-    const provider = new GoogleAuthProvider()
-
-    console.log("first")
+    console.log("first");
     signInWithPopup(auth, provider)
       .then((result) => {
-
         const { displayName, email } = result.user;
         // setUserData({ displayName, email })
 
-      if(displayName&&email){
-        navigate("/")
-      }
-      }).catch((error) => {
-
+        if (displayName && email) {
+          navigate("/");
+        }
+      })
+      .catch((error) => {
         console.log({ error });
-
       });
-  }
-
-
-  
+  };
 
   return (
-    <div >
-       
-        <GoogleOutlined onClick={SignUpUsingGoogle} type="button" className="login-with-google-btn" />
-       
-       
-      
+    <div>
+      <GoogleOutlined
+        onClick={SignUpUsingGoogle}
+        type="button"
+        className="login-with-google-btn"
+      />
 
       {/* {isLoggedIn &&
         <div className="wrapper">
@@ -66,9 +65,8 @@ const navigate=useNavigate()
           </div>
         </div>
       } */}
-
     </div>
-  )
+  );
 }
 
-export default OAuth
+export default OAuth;
