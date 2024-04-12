@@ -136,26 +136,38 @@ const Dashboard = () => {
   };
 
   const handleDelete = async (id) => {
-    setEditingId(id);
     try {
-      const deleteData = data.map((item) => {
-        console.log(item, "item");
-        if (item.id === editingId) {
-          return "";
-        }
-        return item;
-      });
-      console.log(deleteData, "deletedata");
-      await axios.put(
-        `http://localhost:8000/data/${editingId}`,
-        deleteData.find((item) => item.id === editingId)
-      );
+      await axios.delete(`http://localhost:8000/data/${id}`);
+      // If delete operation is successful, update the local data state
+      const newData = data.filter(item => item.id !== id);
+      setData(newData); // Assuming you have a setData function to update the state
     } catch (error) {
-      console.error("Error adding/updating data:", error);
-    } finally {
-      fetchData();
+      console.error("Error deleting data:", error);
     }
-  };
+  }
+  
+
+  // const handleDelete = async (id) => {
+  //   setEditingId(id);
+  //   try {
+  //     const deleteData = data.map((item) => {
+  //       console.log(item, "item");
+  //       if (item.id === editingId) {
+  //         return "";
+  //       }
+  //       return item;
+  //     });
+  //     console.log(deleteData, "deletedata");
+  //     await axios.put(
+  //       `http://localhost:8000/data/${editingId}`,
+  //       deleteData.find((item) => item.id === editingId)
+  //     );
+  //   } catch (error) {
+  //     console.error("Error adding/updating data:", error);
+  //   } finally {
+  //     fetchData();
+  //   }
+  // };
 
   const showModal = () => {
     setIsModalOpen(true);
