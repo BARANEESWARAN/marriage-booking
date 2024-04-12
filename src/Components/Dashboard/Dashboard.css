@@ -1,6 +1,6 @@
 .card-container {
     width: 100%;
-    /* padding: 4rem 1rem 1rem 1rem; */
+    padding: 4rem 1rem 1rem 1rem;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -11,9 +11,13 @@
 .card{
     width: 100%;
 display: flex;
+align-items: center;
+justify-content: flex-start;
+gap: 0.5rem;
+
 }
 .card .view-btn{
-    min-width: 18rem;
+    min-width: 22rem;
     width: 100%;
     margin: 1rem 0;
     
@@ -55,4 +59,15 @@ display: flex;
   
   @keyframes s6 { 
     100%{transform: rotate(1turn)}
+  }
+  .bold{
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+  .create-btn{
+    
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    padding-right: 1rem;
   }

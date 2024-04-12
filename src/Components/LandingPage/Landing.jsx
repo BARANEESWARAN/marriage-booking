@@ -21,23 +21,11 @@ const Cards = ({ data }) => {
   }
   return (
     <Card className="card">
-      <h2>{data["first name"]} {data["last name"]}</h2>
-      <p>Title: {data.title}</p>
-      <p>DOB: {data.dob}</p>
-      <p>Room: {data.room}</p>
-      <p>Bedding: {data.bedding}</p>
-      <p>Email: {data.email}</p>
-      <p>Phone Number: {data["phone number"]}</p>
-      <p>Notes: {data.notes}</p>
-      <p>Amount Due: {data["amount due"]}</p>
-      <p>Deposit Due: {data["deposit due"]}</p>
-      <p>Remainder Due: {data["remainder due"]}</p>
-      <p>Travel Insurance: {data["travel insurance"]}</p>
-      <p>Credit Card Type: {data["credit card type"]}</p>
-      <p>Credit Card Number: {data["credit card number"]}</p>
-      <p>Expiry Date: {data["expiry date (mm/yy)"]}</p>
-      <p>CVV: {data.cvv}</p>
-      <p>Billing Address: {data["billing address"]}</p>
+      <h2>{data["first name"]} {data["eventname"]}</h2>
+      <p><span className='bold'>Location:</span> {data.location}</p>
+      <p><span className='bold'>StartDate:</span> {data.startdate}</p>
+      <p><span className='bold'>EndDate:</span> {data.enddate}</p>
+
       <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", gap: "1rem" }}>
 
 
