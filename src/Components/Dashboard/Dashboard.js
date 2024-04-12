@@ -138,9 +138,8 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:8000/data/${id}`);
-      // If delete operation is successful, update the local data state
       const newData = data.filter(item => item.id !== id);
-      setData(newData); // Assuming you have a setData function to update the state
+      setData(newData);
     } catch (error) {
       console.error("Error deleting data:", error);
     }
