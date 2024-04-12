@@ -6,6 +6,7 @@ import { FacebookOutlined, TwitterOutlined, GoogleOutlined } from '@ant-design/i
 
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { useNavigate } from "react-router-dom";
 
 function OAuth() {
 
@@ -14,13 +15,10 @@ const { id } = useParams();
 
   
   const SignUpUsingGoogle = () => {
+    const provider = new GoogleAuthProvider();
 
-    const provider = new GoogleAuthProvider()
-
-  
     signInWithPopup(auth, provider)
       .then((result) => {
-
         const { displayName, email } = result.user;
         // setUserData({ displayName, email })
 
@@ -30,7 +28,6 @@ const { id } = useParams();
       }).catch((error) => {
 
         console.log({ error });
-
       });
   }
 
@@ -38,12 +35,12 @@ const { id } = useParams();
   
 
   return (
-    <div >
-       
-        <GoogleOutlined onClick={SignUpUsingGoogle} type="button" className="login-with-google-btn" />
-       
-       
-      
+    <div>
+      <GoogleOutlined
+        onClick={SignUpUsingGoogle}
+        type="button"
+        className="login-with-google-btn"
+      />
 
       {/* {isLoggedIn &&
         <div className="wrapper">
@@ -66,9 +63,8 @@ const { id } = useParams();
           </div>
         </div>
       } */}
-
     </div>
-  )
+  );
 }
 
-export default OAuth
+export default OAuth;
