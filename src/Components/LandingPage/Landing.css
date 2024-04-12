@@ -11,6 +11,10 @@
 .card{
     width: 100%;
 display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+
 }
 .card .view-btn{
     min-width: 22rem;
@@ -55,4 +59,8 @@ display: flex;
   
   @keyframes s6 { 
     100%{transform: rotate(1turn)}
+  }
+  .bold{
+    font-weight: 600;
+    margin-right: 0.5rem;
   }

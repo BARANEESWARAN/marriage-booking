@@ -21,28 +21,19 @@ const accesstoken=localStorage.getItem("accesstoken")
   }
   return (
     <Card className="card">
-      <h2>{data["FIRST NAME"]} {data["LAST NAME"]}</h2>
-      <p>Title: {data.TITLE}</p>
-      <p>DOB: {data.DOB}</p>
-      <p>Room: {data.ROOM}</p>
-      <p>Bedding: {data.BEDDING}</p>
-      <p>Email: {data.EMAIL}</p>
-      <p>Phone Number: {data["PHONE NUMBER"]}</p>
-      <p>Notes: {data.NOTES}</p>
-      <p>Amount Due: {data["AMOUNT DUE"]}</p>
-      <p>Deposit Due: {data["DEPOSIT DUE"]}</p>
-      <p>Remainder Due: {data["REMAINDER DUE"]}</p>
-      <p>Travel Insurance: {data["TRAVEL INSURANCE"]}</p>
-      <p>Credit Card Type: {data["CREDIT CARD TYPE"]}</p>
-      <p>Credit Card Number: {data["CREDIT CARD NUMBER"]}</p>
-      <p>Expiry Date: {data["EXPIRY DATE (MM/YY)"]}</p>
-      <p>CVV: {data.CVV}</p>
-      <p>Billing Address: {data["BILLING ADDRESS"]}</p>
-    
+       <h2>{data["first name"]} {data["eventname"]}</h2>
+  <p><span className='bold'>Location:</span> {data.location}</p>
+  <p><span className='bold'>StartDate:</span> {data.startdate}</p>
+  <p><span className='bold'>EndDate:</span> {data.enddate}</p>
+ 
+    <div style={{display:"flex",alignItems:"center",justifyContent:"flex-start",gap:"1rem"}}>
+
+
     <Button className='view-btn' type='primary' onClick={handleClick}>
 
-     View
-    </Button>
+View
+</Button>
+    </div>
     </Card>
   );
 };
