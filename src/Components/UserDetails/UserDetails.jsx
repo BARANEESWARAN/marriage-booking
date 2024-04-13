@@ -5,11 +5,14 @@ import Highlighter from 'react-highlight-words';
 import "./UserDetails.css";
 import axios from 'axios';
 import { BaseUrl } from '../../BaseUrl/Url';
-
+import { FaUsersViewfinder } from "react-icons/fa6";
 function UserDetails() {
     const [loading, setLoading] = useState(false);
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
+    const[user,setUser]=useState(false)
+    const[userTable,setUserTable]=useState(false)
+const[id,setId]=useState()
     const searchInput = useRef(null);
 const [data,setData]=useState()
     const handleSearch = (selectedKeys, confirm, dataIndex) => {
@@ -25,46 +28,125 @@ const [data,setData]=useState()
 
     const columns = [
         {
-            title: 'Email',
-            dataIndex: 'email',
-            key: 'email',
+            title: 'Event Name',
+            dataIndex: 'eventname',
+            key: 'eventname',
             sorter: (a, b) => a.choosePackage.localeCompare(b.choosePackage),
-            ...getColumnSearchProps('email'),
+            ...getColumnSearchProps('eventname'),
         },
         {
+            title: 'Location',
+            dataIndex: 'location',
+            key: 'location',
+            ...getColumnSearchProps('location'),
+        },
+        {
+            title: 'Start Date',
+            dataIndex: 'startdate',
+            key: 'startdate',
+          
+        },
+        {
+            title: 'End Date',
+            dataIndex: 'enddate',
+            key: 'enddate',
+        },
+     
+        {
+            title: 'Registered Users',
+            key: 'Registered Users',
+            width:150,
+            align:"center",
+            render: (text, record) => (
+                <Space size="middle">
+                    <Button icon={<FaUsersViewfinder />} onClick={() => handle_edit(text, record)} />
+                    {/* <Button icon={<DeleteOutlined />} onClick={() => handle_delete(text)} /> */}
+                </Space>
+            ),
+        },
+    ];
+    const UserColumns = [
+        {
             title: 'First Name',
-            dataIndex: 'first name',
-            key: 'first name',
-            ...getColumnSearchProps('first name'),
+            dataIndex: 'firstName',
+            key: 'firstName',
+            fixed:"left"
         },
         {
             title: 'Last Name',
-            dataIndex: 'last name',
-            key: 'last name',
-            ...getColumnSearchProps('last name'),
+            dataIndex: 'lastName',
+            key: 'lastName',
+            fixed:"left"
+        },
+        {
+            title: 'Email',
+            dataIndex: 'email',
+            key: 'email',
+            fixed:"left"
+        },
+        {
+            title: 'Amount Due',
+            dataIndex: 'amountDue',
+            key: 'amountDue',
+        },
+        {
+            title: 'Bedding',
+            dataIndex: 'bedding',
+            key: 'bedding',
+        },
+        {
+            title: 'Choose Package',
+            dataIndex: 'choosePackage',
+            key: 'choosePackage',
+        },
+        {
+            title: 'Deposit Due',
+            dataIndex: 'depositDue',
+            key: 'depositDue',
         },
         {
             title: 'DOB',
             dataIndex: 'dob',
             key: 'dob',
         },
+     
+        {
+            title: 'Mobile Number',
+            dataIndex: 'mobileNumber',
+            key: 'mobileNumber',
+        },
+        {
+            title: 'Notes',
+            dataIndex: 'notes',
+            key: 'notes',
+        },
+        {
+            title: 'Phone Number',
+            dataIndex: 'phoneNumber',
+            key: 'phoneNumber',
+        },
+        {
+            title: 'Remainder Due',
+            dataIndex: 'remainderDue',
+            key: 'remainderDue',
+        },
+        {
+            title: 'Room',
+            dataIndex: 'room',
+            key: 'room',
+        },
         {
             title: 'Title',
             dataIndex: 'title',
             key: 'title',
-            ...getColumnSearchProps('title'),
         },
         {
-            title: 'Action',
-            key: 'action',
-            render: (text, record) => (
-                <Space size="middle">
-                    <Button icon={<EditOutlined />} onClick={() => handle_edit(text, record)} />
-                    <Button icon={<DeleteOutlined />} onClick={() => handle_delete(text)} />
-                </Space>
-            ),
+            title: 'Travel Insurance',
+            dataIndex: 'travelInsurance',
+            key: 'travelInsurance',
         },
     ];
+    
     
     
 
@@ -120,8 +202,9 @@ const [data,setData]=useState()
     const fetchData=async()=>{
         try{
             const responce=await axios.get(BaseUrl)
-            console.log("first",responce.data)
+         
     setData(responce.data)
+
             
         }
         catch{
@@ -139,20 +222,47 @@ fetchData()
 
     const handle_edit = (value, record) => {
         // Handle edit functionality
+      
+            const userData=data.filter(user => user.id === record.id)
+            console.log("userData",userData[0].user)
+        if(userData[0].user){
+            setUser(userData[0].user)
+            setUserTable(true)  
+        }
+        else{
+            message.warning("no user found")
+        }
+      
+        // fetchData()
     };
 
     const handle_clear = async () => {
         // Handle clear functionality
     };
-
+console.log(user,"user")
     return (
         <div>
-            <div>
+           {
+            userTable===false?
+            (
+                <div>
                 <Table loading={loading} columns={columns}
                 dataSource={data}
                 scroll={{ x: 'max-content' }}
                 />
             </div>
+            )
+            :
+            (
+                <div>
+                    <Button type='primary' onClick={()=>setUserTable(false)} style={{position:"relative",bottom:"1rem"}}>Back</Button>
+                <Table loading={loading} columns={UserColumns}
+                dataSource={user}
+                scroll={{ x: 'max-content' }}
+                />
+                </div>
+            )
+           }
         </div>
     );
 }

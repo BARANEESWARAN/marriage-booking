@@ -4,6 +4,8 @@ import { NavLink, useParams } from 'react-router-dom';
 import { BaseUrl } from '../../BaseUrl/Url';
 import axios from 'axios';
 import { UserUrl } from '../../BaseUrl/UserUrl';
+import dayjs from 'dayjs';
+import moment from 'moment';
 
 const { TextArea } = Input;
 
@@ -92,7 +94,6 @@ const MyForm = () => {
     try {
       const isIdExists = data && data.some(item => item.id === editingId);
       if (isIdExists) {
-        console.log("hi")
         const updatedData = data.map(item => {
           if (item.id === editingId) {
             if (!item.user) {
@@ -205,7 +206,34 @@ const MyForm = () => {
             </div>
             <div style={{ marginBottom: '15px' }}>
               <label>DOB</label>
-              <DatePicker style={{ width: '100%' }} disabled={disable}/>
+
+              {
+                formValues.dob?
+                (
+                  <DatePicker style={{ width: '100%' }} disabled={disable} allowClear={false}
+                  value={dayjs(formValues.dob)}
+                  onChange={(date, dateString) =>
+                    setFormValues({ ...formValues, dob: dateString })
+                  }
+                placeholder='value'
+                />
+
+                ):
+                (
+                
+
+                <DatePicker
+                style={{ width: "100%" }}
+                name="enddate"
+                value={formData.dob ? moment(formValues.dob) : null}
+                onChange={(date, dateString) =>
+                  setFormValues({ ...formValues, dob: dateString })
+                }
+                placeholder='no value'
+              />
+                )
+              }
+            
             </div>
             <div style={{ marginBottom: '15px' }}>
               <label>Room</label>
@@ -217,7 +245,7 @@ const MyForm = () => {
             </div>
             <div style={{ marginBottom: '15px' }}>
               <label>Email</label>
-              <Input name="email" value={formValues.email} onChange={handleChange} disabled={disable}   required/>
+              <Input name="email" value={formValues.email} onChange={handleChange} disabled={true}   required/>
             </div>
             <div style={{ marginBottom: '15px' }}>
               <label>Phone Number</label>

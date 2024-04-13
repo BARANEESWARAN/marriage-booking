@@ -1,21 +1,135 @@
 {
   "data": [
     {
-<<<<<<< HEAD
-=======
-      "id": "2254",
+      "id": "1",
       "eventname": "event 1",
-      "startdate": "2024-04-01",
-      "enddate": "2024-04-30",
-      "location": "location 1"
+      "startdate": "2024-04-15",
+      "enddate": "2024-04-17",
+      "location": "location 1",
+      "user": [
+        {
+          "choosePackage": "1000",
+          "firstName": "Barani",
+          "lastName": "A",
+          "title": "Marriage",
+          "dob": "",
+          "room": "2",
+          "bedding": "1",
+          "email": "Brendan.Cleary@gtigrows.com",
+          "phoneNumber": "+913024942953",
+          "mobileNumber": "+913024942953",
+          "amountDue": "100",
+          "depositDue": "800",
+          "remainderDue": "400",
+          "travelInsurance": "500",
+          "notes": "with ac",
+          "accesstoken": "baranees1@gmail.com"
+        },
+        {
+          "choosePackage": "dfsdfds",
+          "firstName": "asd",
+          "lastName": "sad",
+          "title": "aa",
+          "dob": "2024-04-18",
+          "room": "a",
+          "bedding": "a",
+          "email": "baranees1@gmail.com",
+          "phoneNumber": "a",
+          "mobileNumber": "a",
+          "amountDue": "a",
+          "depositDue": "a",
+          "remainderDue": "a",
+          "travelInsurance": "a",
+          "notes": "a",
+          "accesstoken": "baranees1@gmail.com"
+        }
+      ],
+      "payment": [
+        {
+          "firstName": "asd",
+          "lastName": "sad",
+          "creditCardType": "a",
+          "creditCardNumber": "a",
+          "expiryDate": "a",
+          "cvv": "a",
+          "billingAddress": "",
+          "email": "baranees1@gmail.com"
+        }
+      ]
     },
     {
->>>>>>> 28b1e36c04d9ae85388952f3f734ccfa94b8a3e1
       "id": "2",
       "eventname": "event 2",
       "startdate": "2024-05-20",
       "enddate": "2024-05-22",
-      "location": "location 2"
+      "location": "location 2",
+      "user": [
+        {
+          "choosePackage": "2000",
+          "firstName": "Prashanth",
+          "lastName": "A",
+          "title": "Marriage",
+          "dob": "",
+          "room": "2",
+          "bedding": "1",
+          "email": "Brendan.Cleary@gtigrows.com",
+          "phoneNumber": "+913024942953",
+          "mobileNumber": "+913024942953",
+          "amountDue": "100",
+          "depositDue": "800",
+          "remainderDue": "400",
+          "travelInsurance": "500",
+          "notes": "no",
+          "accesstoken": "baranees1@gmail.com"
+        },
+        {
+          "choosePackage": "dfsdfds",
+          "firstName": "asd",
+          "lastName": "sad",
+          "title": "a",
+          "dob": "",
+          "room": "2",
+          "bedding": "a",
+          "email": "Brendan.Cleary@gtigrows.com",
+          "phoneNumber": "+913024942953",
+          "mobileNumber": "+913024942953",
+          "amountDue": "100",
+          "depositDue": "800",
+          "remainderDue": "400",
+          "travelInsurance": "500",
+          "notes": "a"
+        },
+        {
+          "choosePackage": "20000",
+          "firstName": "Barani0",
+          "lastName": "sad0",
+          "title": "m0",
+          "dob": "",
+          "room": "20",
+          "bedding": "a0",
+          "email": "baranees1@gmail.com",
+          "phoneNumber": "+9130249429530",
+          "mobileNumber": "+9130249429530",
+          "amountDue": "1000",
+          "depositDue": "8000",
+          "remainderDue": "4000",
+          "travelInsurance": "5000",
+          "notes": "no0",
+          "accesstoken": "baranees1@gmail.com"
+        }
+      ],
+      "payment": [
+        {
+          "firstName": "BArani",
+          "lastName": "A",
+          "creditCardType": "a",
+          "creditCardNumber": "A",
+          "expiryDate": "A",
+          "cvv": "A",
+          "billingAddress": "A",
+          "email": "baranees1@gmail.com"
+        }
+      ]
     },
     {
       "id": "3",
@@ -37,13 +151,6 @@
       "startdate": "2024-08-12",
       "enddate": "2024-08-14",
       "location": "location 5"
-    },
-    {
-      "id": "2561",
-      "eventname": "",
-      "startdate": "",
-      "enddate": "",
-      "location": ""
     },
     {
       "id": "c433",
@@ -74,90 +181,11 @@
       "location": "location 9"
     },
     {
-      "id": "878e",
-      "eventname": "event 10",
+      "id": "86c9",
+      "eventname": "Barani event",
       "startdate": "2024-04-01",
-      "enddate": "2024-04-30",
-      "location": "location 10"
-    },
-    {
-      "id": "5893",
-      "eventname": "event 11",
-      "startdate": "2024-04-02",
-      "enddate": "2024-04-02",
-      "location": "location 11",
-      "user": [
-        {
-          "choosePackage": "dfsdfds",
-          "firstName": "asd",
-          "lastName": "sad",
-          "title": "",
-          "dob": "",
-          "room": "",
-          "bedding": "",
-          "email": "baranees1@gmail.com",
-          "phoneNumber": "",
-          "mobileNumber": "",
-          "amountDue": "",
-          "depositDue": "",
-          "remainderDue": "",
-          "travelInsurance": "",
-          "notes": "",
-          "accesstoken": "baranees1@gmail.com"
-<<<<<<< HEAD
-=======
-        },
-        {
-          "choosePackage": "Package 1",
-          "firstName": "Prasanth",
-          "lastName": "A",
-          "title": "title",
-          "dob": "",
-          "room": "2",
-          "bedding": "bedd",
-          "email": "prasanthneo24@gmail.com",
-          "phoneNumber": "536346",
-          "mobileNumber": "66646",
-          "amountDue": "666",
-          "depositDue": "666",
-          "remainderDue": "4444",
-          "travelInsurance": "555",
-          "notes": "nothing",
-          "accesstoken": "prasanthneo24@gmail.com"
->>>>>>> 28b1e36c04d9ae85388952f3f734ccfa94b8a3e1
-        }
-      ],
-      "payment": [
-        {
-<<<<<<< HEAD
-          "firstName": "asd",
-          "lastName": "sad",
-=======
-          "firstName": "Prasanth",
-          "lastName": "A",
->>>>>>> 28b1e36c04d9ae85388952f3f734ccfa94b8a3e1
-          "creditCardType": "",
-          "creditCardNumber": "",
-          "expiryDate": "",
-          "cvv": "",
-          "billingAddress": "",
-<<<<<<< HEAD
-          "eventid": "5893"
-=======
-          "email": "baranees1@gmail.com"
-        },
-        {
-          "firstName": "Prasanth",
-          "lastName": "Barani",
-          "creditCardType": "",
-          "creditCardNumber": "",
-          "expiryDate": "",
-          "cvv": "",
-          "billingAddress": "",
-          "email": "prasanthneo24@gmail.com"
->>>>>>> 28b1e36c04d9ae85388952f3f734ccfa94b8a3e1
-        }
-      ]
+      "enddate": "2024-04-10",
+      "location": "chennai"
     }
   ]
 }

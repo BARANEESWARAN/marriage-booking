@@ -44,7 +44,7 @@ function AdminDashBoard() {
         return <Dashboard />;
 
       case 'Create Event':
-        return <CreateEvent />;
+        return "";
 
       case 'Schedule':
         return '';
@@ -88,7 +88,13 @@ function AdminDashBoard() {
             </a>
             <span className="tooltip">Dashboard</span>
           </li>
-
+          <li className={activeOption === 'User Details' ? 'active' : ''}>
+            <a onClick={() => handleOptionClick('User Details')}>
+              <i><ContainerOutlined /></i>
+              <span className="links_name">User Details</span>
+            </a>
+            <span className="tooltip">User Details</span>
+          </li>
 
           <li className={activeOption === 'Create Event' ? 'active' : ''}>
             <a onClick={() => handleOptionClick('Create Event')}>
@@ -110,13 +116,7 @@ function AdminDashBoard() {
             </a>
             <span className="tooltip">Schedule</span>
           </li>
-          <li className={activeOption === 'User Details' ? 'active' : ''}>
-            <a onClick={() => handleOptionClick('User Details')}>
-              <i><ContainerOutlined /></i>
-              <span className="links_name">User Details</span>
-            </a>
-            <span className="tooltip">User Details</span>
-          </li>
+      
           <li className={activeOption === 'My Profile' ? 'active' : ''}>
             <a onClick={() => handleOptionClick('My Profile')}>
               <i><AppstoreOutlined /></i>
