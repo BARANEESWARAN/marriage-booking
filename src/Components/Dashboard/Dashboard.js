@@ -614,7 +614,7 @@ const Dashboard = () => {
         </div>
       </Modal>
 
-      {loading === false ? (
+      {data ? (
         view === false ? (
           <>
             <div className="create-btn">
