@@ -15,6 +15,7 @@ const { id } = useParams();
 
   
   const SignUpUsingGoogle = () => {
+     navigate(`/userregister/${id}`)
     const provider = new GoogleAuthProvider();
 
     signInWithPopup(auth, provider)
