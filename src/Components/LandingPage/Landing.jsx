@@ -258,7 +258,7 @@ const LandingPage = () => {
     <>
 
       {
-        loading === false ?
+        data ?
           (
             <div className='card-container'>
               {data && data.map((card) => (
